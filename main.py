@@ -1,5 +1,6 @@
-from apps import create_app
-app = create_app()
+from apps.run import create_app_test
+print("11111")
+app = create_app_test()
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run(

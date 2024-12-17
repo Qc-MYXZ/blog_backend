@@ -236,7 +236,10 @@ class Redirect(BaseSection):
     register_validate_page: str
     reset_password_page: str
 
-
+class Aerich(BaseSection):
+    app_label = str  
+    tortoise_models = str  
+    
 class SysSetting:
     #  一些公共的设置
     SECRET_KEY = None
@@ -254,14 +257,6 @@ class SysSetting:
     def templates(self):
         return SysSetting.TEMPLATES
 
-
-
-class Server(BaseSection):
-    http_server_host: str
-    http_server_port: int
-
-    
-
 class ProjectSettings(BaseSettings):
     """
     项目设置文件
@@ -274,7 +269,7 @@ class ProjectSettings(BaseSettings):
     redis: Redis = Redis()
     security: Security = Security()
     redirect: Redirect = Redirect()
-    server: Server = Server()
+    aerich: Aerich = Aerich()
     def __init__(self):
         self.system.SECRET_KEY = self.security.jwt_secret_key
         self.system.ALGORITHM = self.security.algorithm
